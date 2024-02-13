@@ -1,8 +1,11 @@
 const express = require('express');
-const userRoute = express();
+const user_route = express();
+
+user_route.set('view engine','ejs');
+user_route.set('views','./views/users')
 
 const userController = require('../controller/userController');
 
-userRoute.get('/register', userController.loadRegister);
+user_route.get('/register', userController.loadRegister);
 
-module.exports = userRoute;
+module.exports = user_route;
