@@ -1,4 +1,9 @@
+<!-- views/users/registration.ejs -->
+
+<!-- Include header partial -->
 <% include('../layouts/headers.ejs') %>
+
+    <!-- User registration form -->
     <h1>User Registration Form</h1>
     <form action="" method="post" enctype="multipart/form-data">
         <input type="text" name="name" placeholder="Enter Name" required>
@@ -14,12 +19,12 @@
         <input type="submit" value="Register">
     </form>
 
-<%
-    if (typeof message !== 'undefined') {
-        %>
-            <p style="color: green;"><%= message %></p>    
-        <%
-    } 
-%>
+    <!-- Display registration message if available -->
+    <% if (typeof message !=='undefined' ) { %>
+        <p style="color: green;">
+            <%= message %>
+        </p>
+        <% } %>
 
-<% include('../layouts/footer.ejs') %>
+            <!-- Include footer partial -->
+            <% include('../layouts/footer.ejs') %>
