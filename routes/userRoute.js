@@ -32,4 +32,8 @@ const userController = require('../controller/userController'); // Import userCo
 user_route.get('/register', userController.loadRegister); // GET route to render registration form
 user_route.post('/register', upload.single('image'), userController.insertUser); // POST route to handle user registration
 
+user_route.get('/',userController.loginLoad);
+user_route.get('/login',userController.loginLoad);
+
+
 module.exports = user_route; // Export user_route for use in main application

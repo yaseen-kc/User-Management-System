@@ -48,8 +48,17 @@ const insertUser = async (req, res) => {
     }
 }
 
+const loginLoad = async (req, res) => {
+    try {
+        res.render('login')
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
 // Export functions to be used by other parts of the application
 module.exports = {
     loadRegister,
-    insertUser
+    insertUser,
+    loginLoad
 }
