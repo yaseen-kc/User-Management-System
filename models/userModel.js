@@ -1,8 +1,7 @@
-// Define a Mongoose schema for user data, including fields 
-// for name, email, mobile, image, password, admin status, and verification status.
+// Import necessary modules and packages
+const mongoose = require("mongoose"); // Import Mongoose for MongoDB interaction
 
-const mongoose = require("mongoose");
-
+// Define a Mongoose schema for user data
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -32,7 +31,7 @@ const userSchema = new mongoose.Schema({
         type: Number,
         default: 0
     }
-
 });
+
 // Export the Mongoose model for the User schema
 module.exports = mongoose.model('User', userSchema);

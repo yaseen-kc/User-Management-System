@@ -1,53 +1,54 @@
-// Imports the User model for interacting with user data.
-const User = require('../models/userModel')
-const bcrypt = require('bcrypt')
+// Import necessary modules and packages
+const User = require('../models/userModel'); // Import the User model
+const bcrypt = require('bcrypt'); // Import bcrypt for password hashing
 
+// Function to hash the password using bcrypt
 const securePassword = async (password) => {
     try {
-        const passwordHash = await bcrypt.hash(password, 10);
-        return passwordHash
+        const passwordHash = await bcrypt.hash(password, 10); // Hash the password with a salt of 10 rounds
+        return passwordHash; // Return the hashed password
     } catch (error) {
-        console.log();
+        console.log(error.message); // Log any errors that occur during hashing
     }
 }
 
-// Defines a function to render the registration page.
+// Function to render the registration page
 const loadRegister = async (req, res) => {
     try {
-        res.render('registration') // Render the registration page
+        res.render('registration'); // Render the registration page
     } catch (error) {
         console.log(error.message); // Log any errors that occur
     }
 }
 
+// Function to insert a new user into the database
 const insertUser = async (req, res) => {
     try {
-        const sPassword = await securePassword(req.body.password)
-        const user = new User({
+        const sPassword = await securePassword(req.body.password); // Hash the user's password
+        const user = new User({ // Create a new User object with user data
             name: req.body.name,
             email: req.body.email,
             mobile: req.body.mno,
             image: req.file.filename,
-            // password: req.body.password,
-            password: sPassword,
-            is_admin: 0
-        })
+            password: sPassword, // Store the hashed password
+            is_admin: 0 // Set admin status
+        });
 
-        const userData = await user.save();
+        const userData = await user.save(); // Save the user data to the database
 
+        // Render registration page with success or failure message
         if (userData) {
-            res.render('registration', { message: 'Registration Successful' })
+            res.render('registration', { message: 'Registration Successful' });
         } else {
-            res.render('registration', { message: 'Registration Failed' })
-
+            res.render('registration', { message: 'Registration Failed' });
         }
 
     } catch (error) {
-        console.log(error.message);
+        console.log(error.message); // Log any errors that occur
     }
 }
 
-// Exports the function to allow it to be used by other parts of the application.
+// Export functions to be used by other parts of the application
 module.exports = {
     loadRegister,
     insertUser
