@@ -56,9 +56,42 @@ const loginLoad = async (req, res) => {
     }
 }
 
+const verifyLogin = async (req, res) => {
+
+    try {
+        const email = req.body.email;
+        const password = req.body.password
+
+        const userData = await User.findOne({ email: email })
+        if (userData) {
+            const passwordMatch = await bcrypt.compare(password, userData.password);
+            if (passwordMatch) {
+                req.session.user_id = userData._id;
+                res.redirect('/home');
+            } else {
+                res.render('login', { message: "Invalid Credentials" })
+            }
+        } else {
+            res.render('login', { message: "Invalid Credentials" })
+        }
+
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+const loadHome = async (req, res) => {
+    try {
+        res.render('home')
+    } catch (error) {
+        console.log(error.message);
+    }
+}
 // Export functions to be used by other parts of the application
 module.exports = {
     loadRegister,
     insertUser,
-    loginLoad
+    loginLoad,
+    verifyLogin,
+    loadHome
 }
