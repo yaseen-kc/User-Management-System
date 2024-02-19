@@ -59,12 +59,28 @@
 
     <div class="login-container">
         <h1>Login</h1>
+
         <form action="/login" method="post">
             <input type="email" name="email" placeholder="Enter email"><br><br>
             <input type="password" name="password" placeholder="Enter password"><br><br>
             <input type="submit" value="Login">
+            <% if (typeof message !=='undefined' ) { %>
+                <div id="errorMessage">
+                    <h4 style="color: red;">
+                        <%= message %>
+                    </h4>
+                </div>
+                <% } %>
+
         </form>
     </div>
 
-
+    <script>
+        setTimeout(function () {
+            var errorMessage = document.getElementById('errorMessage');
+            if (errorMessage) {
+                errorMessage.style.display = 'none';
+            }
+        }, 2000);
+    </script>
     <% include('../layouts/footer.ejs') %>
