@@ -87,11 +87,21 @@ const loadHome = async (req, res) => {
         console.log(error.message);
     }
 }
+
+const userLogout = async (req, res) => {
+    try {
+        req.session.destroy();
+        res.redirect('/');
+    } catch (error) {
+        console.log(error.message);
+    }
+}
 // Export functions to be used by other parts of the application
 module.exports = {
     loadRegister,
     insertUser,
     loginLoad,
     verifyLogin,
-    loadHome
+    loadHome,
+    userLogout
 }
