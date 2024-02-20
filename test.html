@@ -1,4 +1,13 @@
-<% include('../layouts/headers.ejs') %>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -55,11 +64,6 @@
         a:hover {
             color: #0e5a8a;
         }
-
-        img {
-            width: 100px;
-            height: 100px;
-        }
     </style>
     <div class="dashboard-welcome">
         <h3>Welcome, <%= user.name %>
@@ -67,7 +71,7 @@
         <table>
             <tr>
                 <td>Image</td>
-                <td><img src="userImages/<%= user.image %>" alt="<%= user.name %>"></td>
+                <td><img src="<%= user.image %>" alt="<%= user.name %>"></td>
             </tr>
             <tr>
                 <td>Email</td>
@@ -84,4 +88,6 @@
         </table>
         <a href="/logout">Logout</a>
     </div>
-    <% include('../layouts/footer.ejs') %>
+</body>
+
+</html>
