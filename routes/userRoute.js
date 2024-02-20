@@ -13,7 +13,6 @@ user_route.use(session({
     saveUninitialized: true
 }))
 
-
 user_route.set('view engine', 'ejs');
 user_route.set('views', './views/users');
 
