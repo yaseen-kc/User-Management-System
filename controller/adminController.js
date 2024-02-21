@@ -85,11 +85,21 @@ const adminDashboard = async (req, res) => {
     }
 }
 
+const newUserLoad = async (req, res) => {
+    try {
+        res.render('new-user');
+
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
 
 module.exports = {
     loadLogin,
     verifyLogin,
     loadDashboard,
     logout,
-    adminDashboard
+    adminDashboard,
+    newUserLoad
 }
