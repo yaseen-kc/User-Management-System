@@ -61,10 +61,35 @@ const logout = async (req, res) => {
     }
 }
 
+const adminDashboard = async (req, res) => {
+    try {
+
+        var search = '';
+        if (req.query.search) {
+
+            search = req.query.search
+
+        }
+
+        const usersData = await User.find({
+            is_admin: 0,
+            $or: [
+                { name: { $regex: '.*' + search + '.*', $options: 'i' } },
+                { email: { $regex: '.*' + search + '.*', $options: 'i' } },
+                { mobile: { $regex: '.*' + search + '.*', $options: 'i' } }
+            ]
+        });
+        res.render('dashboard', { users: usersData })
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
 
 module.exports = {
     loadLogin,
     verifyLogin,
     loadDashboard,
-    logout
+    logout,
+    adminDashboard
 }
