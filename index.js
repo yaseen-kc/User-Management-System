@@ -13,7 +13,10 @@ app.use(session({
 
 // Import userRoute for handling user-related routes
 const userRoute = require("./routes/userRoute");
-app.use('/', userRoute); // Use userRoute for all routes
+app.use('/', userRoute);
+
+const adminRoute = require("./routes/adminRoute");
+app.use('/admin', adminRoute);// Use userRoute for all routes
 
 const port = 3000; // Define port number for the server to listen on
 
