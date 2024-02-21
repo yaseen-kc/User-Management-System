@@ -60,7 +60,8 @@
         }
 
         .user-table {
-            width: 100%;
+
+            width: 1440px;
             border-collapse: collapse;
         }
 
@@ -90,6 +91,11 @@
         .user-table td a:hover {
             color: #0e5a8a;
         }
+
+        img {
+            width: 100px;
+            height: 100px;
+        }
     </style>
 
     <div class="add-user-link">
@@ -110,6 +116,7 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Mobile</th>
+                <th>Images</th>
                 <th>Actions</th>
             </tr>
             <% if (users.length> 0) { %>
@@ -124,6 +131,7 @@
                         <td>
                             <%= users[i].mobile %>
                         </td>
+                        <td><img src="/userImages/<%= users[i].image %>" alt=""></td>
                         <td>
                             <a href="/admin/edit-user?id=<%= users[i]._id %>">Edit</a>
                             <a href="/admin/delete-user?id=<%= users[i]._id %>">Delete</a>
