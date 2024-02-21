@@ -1,0 +1,145 @@
+<% include('../layouts/headers.ejs') %>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .add-user-link,
+        .search-form,
+        .user-table,
+        .home-link {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .add-user-link a,
+        .home-link a {
+            color: #1877f2;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .add-user-link a:hover,
+        .home-link a:hover {
+            color: #0e5a8a;
+        }
+
+        .search-form input[type="text"] {
+            width: calc(100% - 110px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .search-form input[type="submit"] {
+            background-color: #1877f2;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .search-form input[type="submit"]:hover {
+            background-color: #0e5a8a;
+        }
+
+        .user-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .user-table th,
+        .user-table td {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            text-align: left;
+        }
+
+        .user-table th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+
+        .user-table td:last-child {
+            text-align: center;
+        }
+
+        .user-table td a {
+            color: #1877f2;
+            text-decoration: none;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        .user-table td a:hover {
+            color: #0e5a8a;
+        }
+    </style>
+
+    <div class="add-user-link">
+        <h1>Dashboard</h1>
+        <a href="/admin/new-user">Add New User</a>
+    </div>
+
+    <div class="search-form">
+        <form>
+            <input type="text" class="form-control" placeholder="Search User name, email, mobile" name="search">
+            <input type="submit" class="btn btn-primary" value="Search">
+        </form>
+    </div>
+
+    <div class="user-table">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Actions</th>
+            </tr>
+            <% if (users.length> 0) { %>
+                <% for (let i=0; i < users.length; i++) { %>
+                    <tr>
+                        <td>
+                            <%= users[i].name %>
+                        </td>
+                        <td>
+                            <%= users[i].email %>
+                        </td>
+                        <td>
+                            <%= users[i].mobile %>
+                        </td>
+                        <td>
+                            <a href="/admin/edit-user?id=<%= users[i]._id %>">Edit</a>
+                            <a href="/admin/delete-user?id=<%= users[i]._id %>">Delete</a>
+                        </td>
+                    </tr>
+                    <% } %>
+                        <% } else { %>
+                            <tr>
+                                <td colspan="4">Users Not Found</td>
+                            </tr>
+                            <% } %>
+        </table>
+    </div>
+
+    <div class="home-link">
+        <a href="/admin/home">Go to Home</a>
+    </div>
+
+    <% include('../layouts/footer.ejs') %>
