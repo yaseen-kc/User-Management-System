@@ -14,12 +14,12 @@ const verifyLogin = async (req, res) => {
     try {
         const email = req.body.email
         const password = req.body.password
-        console.log(email, password);
+        // console.log(email, password);
         const userData = await User.findOne({ email: email })
-        console.log(userData);
+        // console.log(userData);
         if (userData) {
             const passwordMatch = await bcrypt.compare(password, userData.password)
-            console.log(passwordMatch);
+            // console.log(passwordMatch);
             if (passwordMatch) {
                 if (userData.is_admin === 1) {
                     req.session.user_id = userData._id;
