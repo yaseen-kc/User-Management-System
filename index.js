@@ -1,26 +1,36 @@
-// Import necessary modules and packages
-const mongoose = require("mongoose"); // Import Mongoose for MongoDB interaction
-mongoose.connect('mongodb://127.0.0.1:27017/UMS'); // Connect to MongoDB
-const express = require('express'); // Import Express framework
-const app = express(); // Create an Express application
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser")
+mongoose.connect("mongodb://localhost:27017/user_management_system");
+const path = require("path")
+const express = require("express")
+const flash = require("express-flash")
 
-const session = require('express-session');
-app.use(session({
-    secret: 'your-secret-key',
-    resave: false,
-    saveUninitialized: true
-}));
+const nocache = require("nocache")
 
-// Import userRoute for handling user-related routes
-const userRoute = require("./routes/userRoute");
-app.use('/', userRoute);
+const app = express();
+app.use(nocache())
 
-const adminRoute = require("./routes/adminRoute");
-app.use('/admin', adminRoute);// Use userRoute for all routes
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }))
 
-const port = 3000; // Define port number for the server to listen on
+app.use("/static", express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'))
 
-// Start the server and listen on the defined port
-app.listen(port, function () {
-    console.log(`App listening on port ${port}!`);
-});
+app.use(express.static('views'))
+
+
+app.use(flash());
+
+// for user routes
+const userRoute = require("./routers/userRoute")
+app.use("/", userRoute)
+
+// for admin routes 
+const adminRoute = require("./routers/adminRoute")
+app.use("/admin", adminRoute)
+
+
+
+app.listen(3000, () => {
+    console.log("http://localhost:3000/")
+})  

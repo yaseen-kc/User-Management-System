@@ -1,87 +1,93 @@
-<% include('../layouts/headers.ejs') %>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+<% include('../layouts/header.ejs') %>
 
-        .dashboard-welcome {
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 40px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            max-width: 400px;
-            width: 100%;
-        }
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      /* Updated font */
+      background-color: #f8f9fa;
+      /* Light gray background color */
+      padding: 20px;
+      /* Added padding for consistent spacing */
+    }
 
-        h3 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: #333;
-        }
+    .user-info {
+      max-width: 600px;
+      margin: auto;
+      background-color: #ffffff;
+      /* White background color */
+      border: 1px solid #ced4da;
+      /* Bootstrap's default border color */
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      /* Light box shadow */
+      padding: 40px;
+      /* Increased padding for better spacing */
+    }
 
-        table {
-            width: 100%;
-            margin-bottom: 20px;
-            border-collapse: collapse;
-        }
+    .user-info h3 {
+      text-align: center;
+      color: #007bff;
+      /* Bootstrap's primary color */
+      margin-bottom: 20px;
+      /* Added bottom margin for spacing */
+    }
 
-        table td {
-            padding: 10px;
-            border-bottom: 1px solid #ccc;
-            text-align: left;
-        }
+    .user-info table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      /* Added bottom margin for spacing */
+    }
 
-        table td:first-child {
-            font-weight: bold;
-            width: 30%;
-        }
+    .user-info table td {
+      padding: 10px;
+    }
 
-        a {
-            color: #1877f2;
-            text-decoration: none;
-            font-size: 18px;
-            transition: color 0.3s;
-            display: block;
-            margin-top: 20px;
-        }
+    .edit-link,
+    .logout-link {
+      display: inline-block;
+      /* Changed to inline-block for better alignment */
+      padding: 10px 20px;
+      /* Added padding for better click area */
+      text-decoration: none;
+      color: #007bff;
+      /* Bootstrap's primary color */
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+      /* Smooth transitions */
+    }
 
-        a:hover {
-            color: #0e5a8a;
-        }
+    .edit-link:hover,
+    .logout-link:hover {
+      background-color: #007bff;
+      /* Changed background color on hover */
+      color: #fff;
+      /* Changed text color on hover */
+    }
+  </style>
 
-        img {
-            width: 100px;
-            height: 100px;
-        }
-    </style>
-    <div class="dashboard-welcome">
-        <h3>Welcome, <%= user.name %>
-        </h3>
-        <table>
-            <tr>
-                <td>Image</td>
-                <td><img src="userImages/<%= user.image %>" alt="<%= user.name %>"></td>
-            </tr>
-            <tr>
-                <td>Email</td>
-                <td>
-                    <%= user.email %>
-                </td>
-            </tr>
-            <tr>
-                <td>Mobile No</td>
-                <td>
-                    <%= user.mobile %>
-                </td>
-            </tr>
-        </table>
-        <a href="/logout">Logout</a>
-    </div>
-    <% include('../layouts/footer.ejs') %>
+  <div class="container user-info">
+    <h3>Welcome, <%= user.name %>
+    </h3>
+
+    <table>
+      <tr>
+        <td>Email:</td>
+        <td>
+          <%= user.email %>
+        </td>
+      </tr>
+      <tr>
+        <td>Mobile:</td>
+        <td>
+          <%= user.mobile %>
+        </td>
+      </tr>
+    </table>
+
+    <a class="edit-link" href="/edit?id=<%= user._id %>">Edit Profile</a>
+
+    <a class="logout-link" href="/logout">Logout</a>
+  </div>
+
+  <% include('../layouts/footer.ejs') %>

@@ -1,90 +1,97 @@
-<% include('../layouts/headers.ejs') %>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+<% include('../layouts/header.ejs') %>
 
-        .welcome-container {
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 40px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            max-width: 400px;
-            width: 100%;
-        }
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      /* Updated font */
+      background-color: #f8f9fa;
+      /* Light gray background color */
+      margin: 0;
+      /* Remove default body margin */
+    }
 
-        h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: #333;
-        }
+    .admin-home-container {
+      max-width: 600px;
+      margin: auto;
+      margin-top: 50px;
+      padding: 20px;
+      background-color: #ffffff;
+      /* White background color */
+      border: 1px solid #ced4da;
+      /* Bootstrap's default border color */
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      /* Light box shadow */
+    }
 
-        table {
-            width: 100%;
-            margin-bottom: 20px;
-            border-collapse: collapse;
-        }
+    .admin-home-container h1 {
+      text-align: center;
+      color: #007bff;
+      /* Bootstrap's primary color */
+      margin-bottom: 20px;
+      /* Increased bottom margin for separation */
+    }
 
-        table td {
-            padding: 10px;
-            border-bottom: 1px solid #ccc;
-            text-align: left;
-        }
+    .admin-home-container table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+    }
 
-        table td:first-child {
-            font-weight: bold;
-            width: 30%;
-        }
+    .admin-home-container table,
+    .admin-home-container table td {
+      border: 1px solid #ced4da;
+      /* Bootstrap's default border color */
+      padding: 10px;
+      /* Added padding */
+    }
 
-        a {
-            color: #1877f2;
-            text-decoration: none;
-            font-size: 18px;
-            transition: color 0.3s;
-            display: block;
-            margin-top: 20px;
-        }
+    .admin-home-container table td:first-child {
+      font-weight: bold;
+      /* Bold font for table header */
+    }
 
-        a:hover {
-            color: #0e5a8a;
-        }
+    .admin-home-container a {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+      text-decoration: none;
+      color: #007bff;
+      /* Bootstrap's primary color */
+      font-weight: bold;
+      /* Bold font for links */
+      transition: color 0.3s;
+      /* Smooth color transition */
+    }
 
-        img {
-            width: 100px;
-            height: 100px;
-        }
-    </style>
+    .admin-home-container a:hover {
+      text-decoration: underline;
+      color: #0056b3;
+      /* Darker shade on hover */
+    }
+  </style>
 
-    <div class="welcome-container">
-        <h1>Welcome, <%= admin.name %>
-        </h1>
-        <table>
-            <tr>
-                <td>Image</td>
-                <td><img src="/userImages/<%= admin.image %>" alt="<%= admin.name %>"></td>
-            </tr>
-            <tr>
-                <td>Email</td>
-                <td>
-                    <%= admin.email %>
-                </td>
-            </tr>
-            <tr>
-                <td>Mobile</td>
-                <td>
-                    <%= admin.mobile %>
-                </td>
-            </tr>
-        </table>
-        <a href="/admin/logout">Logout</a>
-        <a href="/admin/dashboard">Dashboard</a>
-    </div>
+  <div class="container admin-home-container">
+    <h1>Welcome, <%= admin.name %>
+    </h1>
 
-    <% include('../layouts/footer.ejs') %>
+    <table>
+      <tr>
+        <td>Email</td>
+        <td>
+          <%= admin.email %>
+        </td>
+      </tr>
+      <tr>
+        <td>Mobile</td>
+        <td>
+          <%= admin.mobile %>
+        </td>
+      </tr>
+    </table>
+
+    <a href="/admin/logout">Logout</a>
+    <a href="/admin/dashboard">Dashboard</a>
+  </div>
+
+  <% include('../layouts/footer.ejs') %>

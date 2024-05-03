@@ -1,79 +1,100 @@
-<% include('../layouts/headers.ejs') %>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+<% include('../layouts/header.ejs') %>
 
-        .login-container {
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 40px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            max-width: 400px;
-            width: 100%;
-        }
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      /* Updated font */
+      background-color: #f8f9fa;
+      /* Light gray background color */
+    }
 
-        h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: #333;
-        }
+    .admin-login-container {
+      max-width: 400px;
+      margin: auto;
+      margin-top: 100px;
+      padding: 20px;
+      background-color: #ffffff;
+      /* White background color */
+      border: 1px solid #ced4da;
+      /* Bootstrap's default border color */
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      /* Light box shadow */
+    }
 
-        h3 {
-            color: red;
-            margin-top: 10px;
-        }
+    .admin-login-container h1 {
+      text-align: center;
+      color: #007bff;
+      /* Bootstrap's primary color */
+      font-weight: bold;
+      /* Added font weight */
+      margin-bottom: 20px;
+      /* Increased bottom margin */
+    }
 
-        input[type="email"],
-        input[type="password"] {
-            width: calc(100% - 20px);
-            padding: 12px 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-            font-size: 16px;
-        }
+    .admin-login-container h3 {
+      text-align: center;
+      color: #dc3545;
+      /* Bootstrap's danger color */
+      margin-top: 15px;
+      /* Increased top margin */
+    }
 
-        input[type="submit"] {
-            background-color: #1877f2;
-            color: #fff;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-            width: calc(100% - 20px);
-            box-sizing: border-box;
-        }
+    .admin-login-container form {
+      margin-top: 20px;
+    }
 
-        input[type="submit"]:hover {
-            background-color: #0e5a8a;
-        }
-    </style>
+    .admin-login-container form input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ced4da;
+      /* Bootstrap's default border color */
+      border-radius: 3px;
+    }
 
-    <div class="login-container">
-        <h1>Admin Login</h1>
+    .admin-login-container form button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      /* Bootstrap's primary color */
+      color: #fff;
+      /* White text color */
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      font-weight: bold;
+      /* Added font weight */
+      transition: background-color 0.3s;
+      /* Smooth color transition */
+    }
 
-        <% if (typeof message !=='undefined' ) { %>
-            <h3>
-                <%= message %>
-            </h3>
-            <% } %>
+    .admin-login-container form button:hover {
+      background-color: #0056b3;
+      /* Darker shade on hover */
+    }
+  </style>
 
-                <form action="" method="post">
-                    <input type="email" name="email" id="" placeholder="Enter Email"><br>
-                    <input type="password" name="password" id="" placeholder="Enter Password"><br>
-                    <input type="submit" value="Login">
-                </form>
-    </div>
+  <div class="container admin-login-container">
+    <h1>Admin Login</h1>
 
-    <% include('../layouts/footer.ejs') %>
+    <% if (typeof message !=='undefined' ) { %>
+      <h3>
+        <%= message %>
+      </h3>
+      <% } %>
+
+        <form action="" method="post">
+          <div class="mb-3">
+            <input type="email" class="form-control" name="email" placeholder="Enter Email">
+          </div>
+
+          <div class="mb-3">
+            <input type="password" class="form-control" name="password" placeholder="Enter Password">
+          </div>
+
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+  </div>
+
+  <% include('../layouts/footer.ejs') %>

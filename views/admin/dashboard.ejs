@@ -1,153 +1,154 @@
-<% include('../layouts/headers.ejs') %>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
-            padding: 20px;
-        }
+<% include('../layouts/header.ejs') %>
 
-        h1 {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 20px;
-        }
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      /* Updated font */
+      background-color: #f8f9fa;
+      /* Light gray background color */
+    }
 
-        .add-user-link,
-        .search-form,
-        .user-table,
-        .home-link {
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
+    .dashboard-container {
+      max-width: 800px;
+      margin: auto;
+      margin-top: 50px;
+      padding: 20px;
+      background-color: #ffffff;
+      /* White background color */
+      border: 1px solid #ced4da;
+      /* Bootstrap's default border color */
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      /* Light box shadow */
+    }
 
-        .add-user-link a,
-        .home-link a {
-            color: #1877f2;
-            text-decoration: none;
-            font-size: 18px;
-            transition: color 0.3s;
-        }
+    .dashboard-container h1 {
+      text-align: center;
+      color: #007bff;
+      /* Bootstrap's primary color */
+      font-weight: bold;
+      /* Added font weight */
+      margin-bottom: 20px;
+      /* Increased bottom margin */
+    }
 
-        .add-user-link a:hover,
-        .home-link a:hover {
-            color: #0e5a8a;
-        }
+    .dashboard-container a {
+      display: block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #007bff;
+      /* Bootstrap's primary color */
+      font-weight: bold;
+      /* Added font weight */
+      transition: color 0.3s;
+      /* Smooth color transition */
+    }
 
-        .search-form input[type="text"] {
-            width: calc(100% - 110px);
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
+    .dashboard-container a:hover {
+      text-decoration: underline;
+      color: #0056b3;
+      /* Darker shade on hover */
+    }
 
-        .search-form input[type="submit"] {
-            background-color: #1877f2;
-            color: #fff;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
+    .dashboard-container form {
+      margin-top: 20px;
+    }
 
-        .search-form input[type="submit"]:hover {
-            background-color: #0e5a8a;
-        }
+    .dashboard-container form input {
+      width: 60%;
+      padding: 10px;
+      margin-right: 10px;
+      border: 1px solid #ced4da;
+      /* Bootstrap's default border color */
+      border-radius: 3px;
+    }
 
-        .user-table {
+    .dashboard-container form input[type="submit"] {
+      width: auto;
+      /* Adjust the width for the Submit button */
+      padding: 10px 20px;
+      background-color: #007bff;
+      /* Bootstrap's primary color */
+      color: #fff;
+      /* White text color */
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      font-weight: bold;
+      /* Added font weight */
+      transition: background-color 0.3s;
+      /* Smooth color transition */
+    }
 
-            width: 1440px;
-            border-collapse: collapse;
-        }
+    .dashboard-container form input[type="submit"]:hover {
+      background-color: #0056b3;
+      /* Darker shade on hover */
+    }
 
-        .user-table th,
-        .user-table td {
-            padding: 10px;
-            border-bottom: 1px solid #ccc;
-            text-align: left;
-        }
+    .dashboard-container table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+    }
 
-        .user-table th {
-            background-color: #f0f0f0;
-            font-weight: bold;
-        }
+    .dashboard-container table,
+    .dashboard-container table th,
+    .dashboard-container table td {
+      border: 1px solid #ced4da;
+      /* Bootstrap's default border color */
+    }
 
-        .user-table td:last-child {
-            text-align: center;
-        }
+    .dashboard-container table th,
+    .dashboard-container table td {
+      padding: 10px;
+      text-align: left;
+    }
+  </style>
 
-        .user-table td a {
-            color: #1877f2;
-            text-decoration: none;
-            font-size: 16px;
-            margin-right: 10px;
-        }
+  <div class="container dashboard-container">
+    <h1>Dashboard</h1>
 
-        .user-table td a:hover {
-            color: #0e5a8a;
-        }
+    <a href="/admin/new-user">Add New User</a>
 
-        img {
-            width: 100px;
-            height: 100px;
-        }
-    </style>
+    <form>
+      <input type="text" class="form-control" placeholder="Search User name, email, mobile" name="search">
+      <input type="submit" class="btn btn-primary" value="Search">
+    </form>
 
-    <div class="add-user-link">
-        <h1>Dashboard</h1>
-        <a href="/admin/new-user">Add New User</a>
-    </div>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Actions</th>
+      </tr>
 
-    <div class="search-form">
-        <form>
-            <input type="text" class="form-control" placeholder="Search User name, email, mobile" name="search">
-            <input type="submit" class="btn btn-primary" value="Search">
-        </form>
-    </div>
+      <% if (users.length> 0) { %>
+        <% for (let i=0; i < users.length; i++) { %>
+          <tr>
+            <td>
+              <%= users[i].name %>
+            </td>
+            <td>
+              <%= users[i].email %>
+            </td>
+            <td>
+              <%= users[i].mobile %>
+            </td>
+            <td>
+              <a href="/admin/edit-user?id=<%= users[i]._id %>">Edit</a>
+              <a href="/admin/delete-user?id=<%= users[i]._id %>">Delete</a>
+            </td>
+          </tr>
+          <% } %>
+            <% } else { %>
+              <tr>
+                <td colspan="4">Users Not Found</td>
+              </tr>
+              <% } %>
+    </table>
 
-    <div class="user-table">
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Mobile</th>
-                <th>Images</th>
-                <th>Actions</th>
-            </tr>
-            <% if (users.length> 0) { %>
-                <% for (let i=0; i < users.length; i++) { %>
-                    <tr>
-                        <td>
-                            <%= users[i].name %>
-                        </td>
-                        <td>
-                            <%= users[i].email %>
-                        </td>
-                        <td>
-                            <%= users[i].mobile %>
-                        </td>
-                        <td><img src="/userImages/<%= users[i].image %>" alt=""></td>
-                        <td>
-                            <a href="/admin/edit-user?id=<%= users[i]._id %>">Edit</a>
-                            <a href="/admin/delete-user?id=<%= users[i]._id %>">Delete</a>
-                        </td>
-                    </tr>
-                    <% } %>
-                        <% } else { %>
-                            <tr>
-                                <td colspan="4">Users Not Found</td>
-                            </tr>
-                            <% } %>
-        </table>
-    </div>
+    <a href="/admin/home">Go to Home</a>
+  </div>
 
-    <div class="home-link">
-        <a href="/admin/home">Go to Home</a>
-    </div>
-
-    <% include('../layouts/footer.ejs') %>
+  <% include('../layouts/footer.ejs') %>

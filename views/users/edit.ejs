@@ -1,0 +1,98 @@
+<% include('../layouts/header.ejs') %>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      /* Updated font */
+      background-color: #f8f9fa;
+      /* Light gray background color */
+    }
+
+    .edit-form {
+      max-width: 400px;
+      margin: auto;
+      margin-top: 50px;
+      padding: 20px;
+      background-color: #ffffff;
+      /* White background color */
+      border: 1px solid #ced4da;
+      /* Bootstrap's default border color */
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      /* Light box shadow */
+    }
+
+    .edit-form h1 {
+      text-align: center;
+      color: #007bff;
+      /* Bootstrap's primary color */
+      font-weight: bold;
+      /* Added font weight */
+      margin-bottom: 20px;
+      /* Increased bottom margin */
+    }
+
+    .edit-form label {
+      font-weight: bold;
+      /* Added font weight to labels */
+    }
+
+    .edit-form input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ced4da;
+      /* Bootstrap's default border color */
+      border-radius: 3px;
+      transition: border-color 0.3s;
+      /* Smooth transition for input border color */
+    }
+
+    .edit-form button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      /* Bootstrap's primary color */
+      color: #fff;
+      /* White text color */
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      /* Smooth transition for button background color */
+    }
+
+    .edit-form button:hover {
+      background-color: #0056b3;
+      /* Darker shade on hover */
+    }
+  </style>
+
+  <div class="container edit-form">
+    <h1>Edit User</h1>
+
+    <form action="/edit" method="post">
+      <input type="hidden" name="user_id" value="<%= user._id %>">
+
+      <div class="mb-3">
+        <label for="name">Enter Name</label>
+        <input type="text" class="form-control" name="name" value="<%= user.name %>"
+          onkeydown="return /[a-zA-Z _]/.test(event.key) || event.keyCode === 8" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="email">Enter Email</label>
+        <input type="email" class="form-control" name="email" value="<%= user.email %>" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="mno">Enter Mobile</label>
+        <input type="text" class="form-control" name="mno" value="<%= user.mobile %>"
+          onkeydown="return /[0-9]/.test(event.key) || event.keyCode === 8" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+  <% include('../layouts/footer.ejs') %>
