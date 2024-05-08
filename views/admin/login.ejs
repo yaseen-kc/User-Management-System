@@ -1,100 +1,109 @@
 <% include('../layouts/header.ejs') %>
 
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      /* Updated font */
-      background-color: #f8f9fa;
-      /* Light gray background color */
-    }
+<style>
+  body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    /* Updated font */
+    background-color: #121212;
+    /* Light gray background color */
+  }
 
-    .admin-login-container {
-      max-width: 400px;
-      margin: auto;
-      margin-top: 100px;
-      padding: 20px;
-      background-color: #ffffff;
-      /* White background color */
-      border: 1px solid #ced4da;
-      /* Bootstrap's default border color */
-      border-radius: 5px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      /* Light box shadow */
-    }
+  .admin-login-container {
+    max-width: 400px;
+    margin: auto;
+    margin-top: 100px;
+    padding: 20px;
+    background-color: #ffffff;
+    /* White background color */
+    border: 1px solid #ced4da;
+    /* Bootstrap's default border color */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Light box shadow */
+  }
 
-    .admin-login-container h1 {
-      text-align: center;
-      color: #007bff;
-      /* Bootstrap's primary color */
-      font-weight: bold;
-      /* Added font weight */
-      margin-bottom: 20px;
-      /* Increased bottom margin */
-    }
+  .admin-login-container h1 {
+    text-align: center;
+    color: #007bff;
+    /* Bootstrap's primary color */
+    font-weight: bold;
+    /* Added font weight */
+    margin-bottom: 20px;
+    /* Increased bottom margin */
+  }
 
-    .admin-login-container h3 {
-      text-align: center;
-      color: #dc3545;
-      /* Bootstrap's danger color */
-      margin-top: 15px;
-      /* Increased top margin */
-    }
+  .admin-login-container h3 {
+    text-align: center;
+    color: #dc3545;
+    /* Bootstrap's danger color */
+    margin-top: 15px;
+    /* Increased top margin */
+  }
 
-    .admin-login-container form {
-      margin-top: 20px;
-    }
+  .admin-login-container form {
+    margin-top: 20px;
+  }
 
-    .admin-login-container form input {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border: 1px solid #ced4da;
-      /* Bootstrap's default border color */
-      border-radius: 3px;
-    }
+  .admin-login-container form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ced4da;
+    /* Bootstrap's default border color */
+    border-radius: 3px;
+  }
 
-    .admin-login-container form button {
-      width: 100%;
-      padding: 10px;
-      background-color: #007bff;
-      /* Bootstrap's primary color */
-      color: #fff;
-      /* White text color */
-      border: none;
-      border-radius: 3px;
-      cursor: pointer;
-      font-weight: bold;
-      /* Added font weight */
-      transition: background-color 0.3s;
-      /* Smooth color transition */
-    }
+  .admin-login-container form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    /* Bootstrap's primary color */
+    color: #fff;
+    /* White text color */
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: bold;
+    /* Added font weight */
+    transition: background-color 0.3s;
+    /* Smooth color transition */
+  }
 
-    .admin-login-container form button:hover {
-      background-color: #0056b3;
-      /* Darker shade on hover */
-    }
-  </style>
+  .admin-login-container form button:hover {
+    background-color: #0056b3;
+    /* Darker shade on hover */
+  }
+</style>
 
-  <div class="container admin-login-container">
-    <h1>Admin Login</h1>
+<div class="container admin-login-container">
+  <h1>Admin Login</h1>
 
-    <% if (typeof message !=='undefined' ) { %>
-      <h3>
-        <%= message %>
-      </h3>
-      <% } %>
+  <% if (typeof message !=='undefined' ) { %>
+  <h3><%= message %></h3>
+  <% } %>
 
-        <form action="" method="post">
-          <div class="mb-3">
-            <input type="email" class="form-control" name="email" placeholder="Enter Email">
-          </div>
+  <form action="" method="post">
+    <div class="mb-3">
+      <input
+        type="email"
+        class="form-control"
+        name="email"
+        placeholder="Enter Email"
+      />
+    </div>
 
-          <div class="mb-3">
-            <input type="password" class="form-control" name="password" placeholder="Enter Password">
-          </div>
+    <div class="mb-3">
+      <input
+        type="password"
+        class="form-control"
+        name="password"
+        placeholder="Enter Password"
+      />
+    </div>
 
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-  </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <a href="/">Logout</a>
+</div>
 
-  <% include('../layouts/footer.ejs') %>
+<% include('../layouts/footer.ejs') %>

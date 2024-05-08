@@ -53,7 +53,7 @@ const insertUser = async (req, res) => {
 
     if (userData) {
       res.render("registration", {
-        message: "Your registration is successful. Please verify your email.",
+        message: "Your registration is successful.",
       });
     } else {
       res.render("registration", { message: "Your registration failed." });
