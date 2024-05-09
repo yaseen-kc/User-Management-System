@@ -1,154 +1,151 @@
 <% include('../layouts/header.ejs') %>
 
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      /* Updated font */
-      background-color: #121212;
-      /* Light gray background color */
-    }
+<style>
+  body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    /* Updated font */
+    background-color: #121212;
+    /* Light gray background color */
+  }
 
-    .dashboard-container {
-      max-width: 800px;
-      margin: auto;
-      margin-top: 50px;
-      padding: 20px;
-      background-color: #ffffff;
-      /* White background color */
-      border: 1px solid #ced4da;
-      /* Bootstrap's default border color */
-      border-radius: 5px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      /* Light box shadow */
-    }
+  .dashboard-container {
+    max-width: 800px;
+    margin: auto;
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #ffffff;
+    /* White background color */
+    border: 1px solid #ced4da;
+    /* Bootstrap's default border color */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Light box shadow */
+  }
 
-    .dashboard-container h1 {
-      text-align: center;
-      color: #007bff;
-      /* Bootstrap's primary color */
-      font-weight: bold;
-      /* Added font weight */
-      margin-bottom: 20px;
-      /* Increased bottom margin */
-    }
+  .dashboard-container h1 {
+    text-align: center;
+    color: #007bff;
+    /* Bootstrap's primary color */
+    font-weight: bold;
+    /* Added font weight */
+    margin-bottom: 20px;
+    /* Increased bottom margin */
+  }
 
-    .dashboard-container a {
-      display: block;
-      margin-top: 20px;
-      text-decoration: none;
-      color: #007bff;
-      /* Bootstrap's primary color */
-      font-weight: bold;
-      /* Added font weight */
-      transition: color 0.3s;
-      /* Smooth color transition */
-    }
+  .dashboard-container a {
+    display: block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #007bff;
+    /* Bootstrap's primary color */
+    font-weight: bold;
+    /* Added font weight */
+    transition: color 0.3s;
+    /* Smooth color transition */
+  }
 
-    .dashboard-container a:hover {
-      text-decoration: underline;
-      color: #0056b3;
-      /* Darker shade on hover */
-    }
+  .dashboard-container a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+    /* Darker shade on hover */
+  }
 
-    .dashboard-container form {
-      margin-top: 20px;
-    }
+  .dashboard-container form {
+    margin-top: 20px;
+  }
 
-    .dashboard-container form input {
-      width: 60%;
-      padding: 10px;
-      margin-right: 10px;
-      border: 1px solid #ced4da;
-      /* Bootstrap's default border color */
-      border-radius: 3px;
-    }
+  .dashboard-container form input {
+    width: 60%;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ced4da;
+    /* Bootstrap's default border color */
+    border-radius: 3px;
+  }
 
-    .dashboard-container form input[type="submit"] {
-      width: auto;
-      /* Adjust the width for the Submit button */
-      padding: 10px 20px;
-      background-color: #007bff;
-      /* Bootstrap's primary color */
-      color: #fff;
-      /* White text color */
-      border: none;
-      border-radius: 3px;
-      cursor: pointer;
-      font-weight: bold;
-      /* Added font weight */
-      transition: background-color 0.3s;
-      /* Smooth color transition */
-    }
+  .dashboard-container form input[type="submit"] {
+    width: auto;
+    /* Adjust the width for the Submit button */
+    padding: 10px 20px;
+    background-color: #007bff;
+    /* Bootstrap's primary color */
+    color: #fff;
+    /* White text color */
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: bold;
+    /* Added font weight */
+    transition: background-color 0.3s;
+    /* Smooth color transition */
+  }
 
-    .dashboard-container form input[type="submit"]:hover {
-      background-color: #0056b3;
-      /* Darker shade on hover */
-    }
+  .dashboard-container form input[type="submit"]:hover {
+    background-color: #0056b3;
+    /* Darker shade on hover */
+  }
 
-    .dashboard-container table {
-      width: 100%;
-      margin-top: 20px;
-      border-collapse: collapse;
-    }
+  .dashboard-container table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
 
-    .dashboard-container table,
-    .dashboard-container table th,
-    .dashboard-container table td {
-      border: 1px solid #ced4da;
-      /* Bootstrap's default border color */
-    }
+  .dashboard-container table,
+  .dashboard-container table th,
+  .dashboard-container table td {
+    border: 1px solid #ced4da;
+    /* Bootstrap's default border color */
+  }
 
-    .dashboard-container table th,
-    .dashboard-container table td {
-      padding: 10px;
-      text-align: left;
-    }
-  </style>
+  .dashboard-container table th,
+  .dashboard-container table td {
+    padding: 10px;
+    text-align: left;
+  }
+</style>
 
-  <div class="container dashboard-container">
-    <h1>Dashboard</h1>
+<div class="container dashboard-container">
+  <h1>Dashboard</h1>
 
-    <a href="/admin/new-user">Add New User</a>
+  <a href="/admin/new-user">Add New User</a>
 
-    <form>
-      <input type="text" class="form-control" placeholder="Search User name, email, mobile" name="search">
-      <input type="submit" class="btn btn-primary" value="Search">
-    </form>
+  <form>
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Search User name, email, mobile"
+      name="search"
+    />
+    <input type="submit" class="btn btn-primary" value="Search" />
+  </form>
 
-    <table>
-      <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Mobile</th>
-        <th>Actions</th>
-      </tr>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Mobile</th>
+      <th>Actions</th>
+    </tr>
 
-      <% if (users.length> 0) { %>
-        <% for (let i=0; i < users.length; i++) { %>
-          <tr>
-            <td>
-              <%= users[i].name %>
-            </td>
-            <td>
-              <%= users[i].email %>
-            </td>
-            <td>
-              <%= users[i].mobile %>
-            </td>
-            <td>
-              <a href="/admin/edit-user?id=<%= users[i]._id %>">Edit</a>
-              <a href="/admin/delete-user?id=<%= users[i]._id %>">Delete</a>
-            </td>
-          </tr>
-          <% } %>
-            <% } else { %>
-              <tr>
-                <td colspan="4">Users Not Found</td>
-              </tr>
-              <% } %>
-    </table>
+    <% if (users.length> 0) { %> <% for (let i=0; i < users.length; i++) { %>
+    <tr>
+      <td><%= users[i].name %></td>
+      <td><%= users[i].email %></td>
+      <td><%= users[i].mobile %></td>
+      <td>
+        <a href="/admin/edit-user?id=<%= users[i]._id %>">Edit</a>
+        <a href="/admin/delete-user?id=<%= users[i]._id %>">Delete</a>
+      </td>
+    </tr>
+    <% } %> <% } else { %>
+    <tr>
+      <td colspan="4">Users Not Found</td>
+    </tr>
+    <% } %>
+  </table>
 
-    <a href="/admin/home">Go to Home</a>
-  </div>
+  <a href="/admin/home">Go to Home</a>
+</div>
 
-  <% include('../layouts/footer.ejs') %>
+<% include('../layouts/footer.ejs') %>

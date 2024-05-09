@@ -1,6 +1,5 @@
 const sessionSecret = "mysitesessionsecret";
 
-
-module.exports={
-    sessionSecret
-}
+module.exports = {
+  sessionSecret,
+};

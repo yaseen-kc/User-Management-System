@@ -1,127 +1,153 @@
 <% include('../layouts/header.ejs') %>
 
-  <style>
-    body {
-      background-color: #121212;
-      /* Light gray background color */
-    }
+<style>
+  body {
+    background-color: #121212;
+    /* Light gray background color */
+  }
 
-    .registration-container {
-      max-width: 400px;
-      margin: auto;
-      margin-top: 50px;
-      padding: 20px;
-      background-color: #ffffff;
-      /* White background color */
-      border: 1px solid #ced4da;
-      /* Bootstrap's default border color */
-      border-radius: 5px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      /* Light box shadow */
-    }
+  .registration-container {
+    max-width: 400px;
+    margin: auto;
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #ffffff;
+    /* White background color */
+    border: 1px solid #ced4da;
+    /* Bootstrap's default border color */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Light box shadow */
+  }
 
-    .registration-container h1 {
-      text-align: center;
-      color: #007bff;
-      /* Bootstrap's primary color */
-    }
+  .registration-container h1 {
+    text-align: center;
+    color: #007bff;
+    /* Bootstrap's primary color */
+  }
 
-    .registration-container form {
-      margin-top: 20px;
-    }
+  .registration-container form {
+    margin-top: 20px;
+  }
 
-    .registration-container form label {
-      font-weight: bold;
-    }
+  .registration-container form label {
+    font-weight: bold;
+  }
 
-    .registration-container form input {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border: 1px solid #ced4da;
-      /* Bootstrap's default border color */
-      border-radius: 3px;
-    }
+  .registration-container form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ced4da;
+    /* Bootstrap's default border color */
+    border-radius: 3px;
+  }
 
-    .registration-container form input[type="submit"] {
-      width: 100%;
-      padding: 10px;
-      background-color: #007bff;
-      /* Bootstrap's primary color */
-      color: #fff;
-      /* White text color */
-      border: none;
-      border-radius: 3px;
-      cursor: pointer;
-    }
+  .registration-container form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    /* Bootstrap's primary color */
+    color: #fff;
+    /* White text color */
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
 
-    .registration-container form input[type="submit"]:hover {
-      background-color: #0056b3;
-      /* Darker shade on hover */
-    }
+  .registration-container form input[type="submit"]:hover {
+    background-color: #0056b3;
+    /* Darker shade on hover */
+  }
 
-    .registration-container p {
-      color: green;
-      text-align: center;
-    }
+  .registration-container p {
+    color: green;
+    text-align: center;
+  }
 
-    .registration-container a {
-      display: block;
-      margin-top: 20px;
-      text-align: center;
-      text-decoration: none;
-      color: #007bff;
-      /* Bootstrap's primary color */
-    }
+  .registration-container a {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #007bff;
+    /* Bootstrap's primary color */
+  }
 
-    .registration-container a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  .registration-container a:hover {
+    text-decoration: underline;
+  }
+</style>
 
-  <div class="container registration-container">
-    <h1>User Registration</h1>
+<div class="container registration-container">
+  <h1>User Registration</h1>
 
-    <form action="/register" method="post">
-      <div class="mb-3">
-        <label for="name" class="form-label">Enter Name</label>
-        <input type="text" class="form-control" name="name" placeholder="Enter Name"
-          onkeydown="return /[a-zA-Z _]/.test(event.key) || event.keyCode === 8" required aria-label="Name">
-      </div>
+  <form action="/register" method="post">
+    <div class="mb-3">
+      <label for="name" class="form-label">Enter Name</label>
+      <input
+        type="text"
+        class="form-control"
+        name="name"
+        placeholder="Enter Name"
+        onkeydown="return /[a-zA-Z _]/.test(event.key) || event.keyCode === 8"
+        required
+        aria-label="Name"
+      />
+    </div>
 
-      <div class="mb-3">
-        <label for="email" class="form-label">Enter Email</label>
-        <input type="email" class="form-control" name="email" placeholder="Enter Email" required aria-label="Email">
-      </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Enter Email</label>
+      <input
+        type="email"
+        class="form-control"
+        name="email"
+        placeholder="Enter Email"
+        required
+        aria-label="Email"
+      />
+    </div>
 
-      <div class="mb-3">
-        <label for="mno" class="form-label">Enter Mobile</label>
-        <input type="tel" class="form-control" name="mno" placeholder="Enter Mobile" pattern="[0-9]{10}"
-          onkeydown="return /[0-9]/.test(event.key) || event.keyCode === 8" required aria-label="Mobile Number">
-      </div>
+    <div class="mb-3">
+      <label for="mno" class="form-label">Enter Mobile</label>
+      <input
+        type="tel"
+        class="form-control"
+        name="mno"
+        placeholder="Enter Mobile"
+        pattern="[0-9]{10}"
+        onkeydown="return /[0-9]/.test(event.key) || event.keyCode === 8"
+        required
+        aria-label="Mobile Number"
+      />
+    </div>
 
-      <div class="mb-3">
-        <label for="password" class="form-label">Enter Password</label>
-        <input type="password" class="form-control" name="password" placeholder="Enter Password" required
-          aria-label="Password">
-      </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Enter Password</label>
+      <input
+        type="password"
+        class="form-control"
+        name="password"
+        placeholder="Enter Password"
+        required
+        aria-label="Password"
+      />
+    </div>
 
-      <input type="submit" class="btn btn-primary" value="Register">
-    </form>
+    <input type="submit" class="btn btn-primary" value="Register" />
+  </form>
 
-    <a href="/login">LOGIN</a>
+  <a href="/login">LOGIN</a>
 
-    <% if (typeof message !=='undefined' ) { %>
-      <p style="color:rgb(255, 0, 0);" id="errorMessage">
-        <%= message %>
-      </p>
-      <% } %>
-  </div>
+  <% if (typeof message !=='undefined' ) { %>
+  <p style="color: rgb(255, 0, 0)" id="errorMessage"><%= message %></p>
+  <% } %>
+</div>
 
-  <script>
-    // Add the following JavaScript code
-    setTimeout(function () {
-      document.getElementById('errorMessage').style.display = 'none';
-    }, 2000); // 2000 milliseconds = 2 seconds
-  </script>
-  <% include('../layouts/footer.ejs') %>
+<script>
+  // Add the following JavaScript code
+  setTimeout(function () {
+    document.getElementById("errorMessage").style.display = "none";
+  }, 2000); // 2000 milliseconds = 2 seconds
+</script>
+<% include('../layouts/footer.ejs') %>
